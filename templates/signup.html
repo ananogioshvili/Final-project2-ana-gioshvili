@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-signin w-50 m-auto">
+    <form method="post" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <br /><br />
+      <h1 class="h2 mb-3 fw-normal">Please Sign Up</h1>
+      <h1 class="h5 fw-normal">
+        Please fill in this form to create an account.
+      </h1>
+      <br />
+      <div >
+          {{ form.image(class="form-control", placeholder=form.image.label.text) }}
+        <br />
+      </div>
+      <div >
+          {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+        <br />
+      </div>
+      <div>
+          {{ form.surname(class="form-control", placeholder=form.surname.label.text) }}
+      </div>
+      <br />
+      <div>
+          {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+      </div>
+      <br />
+      <div>
+          {{ form.phone(class="form-control", placeholder=form.phone.label.text) }}
+        <br />
+      </div>
+      <div>
+          {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+      </div>
+
+      <div class="form-check text-start my-3">
+        <input class="form-check-input" type="checkbox" value="remember-me" />
+        <label class="form-check-label"> Remember me </label>
+      </div>
+        {{ form.submit(class="btn btn-primary w-100 py-2", placeholder=form.submit.label.text) }}
+    </form>
+  </main>
+</section>
+
+<br /><br /><br /><br />
+{% endblock %}

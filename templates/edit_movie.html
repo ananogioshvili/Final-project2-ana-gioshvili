@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-signin w-50 m-auto">
+    <form method="post" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <br /><br />
+      <h1 class="h5 fw-normal">
+        Please fill in this form to edit a movie!
+      </h1>
+      <br />
+      <div >
+         {{ form.image(class="form-control") }}
+        <br />
+      </div>
+      <div >
+          {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+        <br />
+      </div>
+      <div>
+          {{ form.year(class="form-control", placeholder=form.year.label.text) }}
+      </div>
+
+      <br />
+
+      </div>
+        {{ form.submit(class="btn btn-primary w-100 py-2", placeholder=form.submit.label.text) }}
+    </form>
+  </main>
+</section>
+
+<br /><br /><br /><br />
+{% endblock %}

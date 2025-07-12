@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<section
+  style="display: flex; justify-content: center; gap: 60px; margin-top: 70px"
+>
+  {% for movie in movies %}
+    <div class="card" style="width: 220px; height: 670px">
+      <br />
+      <img src="/static/images/{{ movie['image'] }}" class="card-img-top" />
+      <div class="card-body">
+        <h4 class="card-text">{{ movie['name'] }}</h4>
+        <h6 class="card-text">{{ movie['year'] }}</h6>
+
+        <br />
+
+        <p><a class="btn btn-secondary" href="/movies/{{ movie['id'] }}">View Movie</a></p>
+        {% if current_user.is_authenticated and current_user.role == 'admin' %}
+          <p><a class="btn btn-danger" href="/delete_movie/{{ movie['id'] }}">Delete Movie</a></p>
+          <p><a class="btn btn-info" href="/edit_movie/{{ movie['id'] }}">Edit Movie</a></p>
+        {% endif %}
+
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+<br /><br />
+
+{% endblock %}

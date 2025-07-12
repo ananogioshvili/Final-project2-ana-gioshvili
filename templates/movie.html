@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+
+<br /><br /><br />
+
+<div class="container my-5">
+  <div class="row g-5 align-items-center">
+    <div class="col-md-4 text-center">
+      <img src="/static/images/{{ movie['image'] }}"
+           class="img-fluid rounded shadow"
+           style="max-width: 350px; border-radius: 15px;"
+           alt="{{ movie['name'] }}">
+    </div>
+    <div class="col-md-8">
+      <h1 class="fw-bold display-6 text-dark mb-3">{{ movie['name'] }}</h1>
+      <p class="fs-5 text-secondary mb-3">Released year: {{ movie['year'] }}</p>
+      <hr class="border-secondary w-25 mb-4">
+    </div>
+  </div>
+</div>
+
+
+
+<br /><br />
+
+{% endblock %}
