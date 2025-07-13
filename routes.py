@@ -39,7 +39,7 @@ def login():
         # if User != None:
         #     login_user(user)
         #     flash("You have been logged in.")
-        #     return redirect("/")
+
         if user and user.password == form.password.data:
             login_user(user)
             return redirect("/")
