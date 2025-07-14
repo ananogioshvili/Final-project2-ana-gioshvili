@@ -32,6 +32,13 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(), nullable=False)
     role = db.Column(db.String(), nullable=False, default="user")
 
+
+class Rating(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    movie_id = db.Column(db.Integer, nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)

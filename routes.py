@@ -1,8 +1,8 @@
 from ext import app, db, login_manager
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, request, url_for, jsonify
 from forms import SignUpForm, MovieForm, LoginForm
 from os import path
-from models import Movie, User
+from models import Movie, User, Rating
 from flask_login import login_user,logout_user,login_required
 from werkzeug.utils import secure_filename
 import os
@@ -124,3 +124,17 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", form=form, movies=movies)
 
 
+@app.route('/rate', methods=['POST'])
+def rate_movie():
+    data = request.get_json()
+    movie_id = data.get('movie_id')
+    rating = data.get('rating')
+
+    if not movie_id or not rating:
+        return jsonify({'success': False, 'message': 'Invalid data'}), 400
+
+    new_rating = Rating(movie_id=movie_id, rating=rating)
+    db.session.add(new_rating)
+    db.session.commit()
+
+    return jsonify({'success': True})
